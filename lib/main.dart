@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:loggy/loggy.dart';
+
+import 'envied/env.dart';
 
 void main() {
+  Loggy.initLoggy(
+    logPrinter: const PrettyPrinter(),
+  );
   runApp(const MyApp());
 }
 
@@ -47,7 +53,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with UiLoggy {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -63,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    loggy.info(Env.openAI_Key);
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
